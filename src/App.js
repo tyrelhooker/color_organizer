@@ -4,9 +4,11 @@ import './App.css';
 import AddColorForm from './components/AddColorForm';
 
 function App() {
+  const logColor = (title, color) => console.log(`New Color: ${title} ${color}`);
+
   return (
     <div className="App">
-      <AddColorForm />
+      <AddColorForm onNewColor={logColor}/>
     </div>
   );
 }

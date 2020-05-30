@@ -1,13 +1,15 @@
 import React, { useRef } from 'react';
 
-const AddColorForm = () => {
+const AddColorForm = ({ onNewColor }) => {
 
-  const titleInput = useRef('');
-  const colorInput = useRef('#000000');
+  const titleInput = useRef();
+  const colorInput = useRef();
+
+
   
   const submit = (e) => {
     e.preventDefault();
-    console.log(`New Color: ${titleInput.current.value} ${colorInput.current.value}`);
+    onNewColor(titleInput.current.value, colorInput.current.value)
     titleInput.current.value = '';
     colorInput.current.value = '#000000';
     titleInput.current.focus();
@@ -21,7 +23,7 @@ const AddColorForm = () => {
         required />
       <input ref={colorInput}
         type='color'
-        required/>
+        required />
       <button>ADD</button>
     </form>
   )
