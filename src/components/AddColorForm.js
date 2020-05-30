@@ -1,11 +1,12 @@
 import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 
-const AddColorForm = ({ onNewColor }) => {
+const AddColorForm = ({ onNewColor=f=>f }) => {
 
   const titleInput = useRef();
   const colorInput = useRef();
 
-
+ 
   
   const submit = (e) => {
     e.preventDefault();
@@ -27,6 +28,10 @@ const AddColorForm = ({ onNewColor }) => {
       <button>ADD</button>
     </form>
   )
+}
+
+AddColorForm.propTypes = {
+  onNewColor: PropTypes.func
 }
 
 export default AddColorForm;
