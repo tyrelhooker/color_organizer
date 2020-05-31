@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+
 import Star from './Star';
 
-const StarRating = ({ totalStars = 5 }) => {
-  const [starsSelected, setStarsSelected] = useState(0);
-
-  const change = starsSelected => setStarsSelected(starsSelected);
-
+const StarRating = ({ totalStars = 5, starsSelected = 0, onRate = f => f }) => {
   return (
     <div className='star-rating'>
+      {/* Can use Array(totalStars).fill() OR Array.from({length: totalStars} in lieu of spread ... operator */}
       {[...Array(totalStars)].map((n, i) => (
         <Star
           key={i}
           selected={i < starsSelected}
-          onClick={() => change(i + 1)}
+          onClick={() => onRate(i + 1)}
         />
       ))}
       <p>
@@ -24,7 +22,9 @@ const StarRating = ({ totalStars = 5 }) => {
 };
 
 StarRating.propTypes = {
-  totalStars: PropTypes.number
+  totalStars: PropTypes.number,
+  starsSelected: PropTypes.number,
+  changeRating: PropTypes.func
 };
 
 export default StarRating;
