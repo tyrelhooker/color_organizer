@@ -5,13 +5,14 @@ import AddColorForm from './components/AddColorForm';
 import StarRating from './components/StarRating';
 
 function App() {
-  const logColor = (title, color) => console.log(`New Color: ${title} ${color}`);
+  const logColor = (title, color) =>
+    console.log(`New Color: ${title} ${color}`);
   // const logErrFunc = 5;
 
   return (
-    <div className="App">
+    <div className='App'>
       <AddColorForm onNewColor={logColor} />
-      <StarRating />
+      <StarRating totalStars={10} />
     </div>
   );
 }
