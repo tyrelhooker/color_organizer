@@ -1,5 +1,6 @@
 import React from 'react';
 import Color from './Color';
+import '../stylesheets/ColorList.scss';
 
 const ColorList = ({ colors = [], onRemove = f => f, onRate = f => f }) => {
   return (

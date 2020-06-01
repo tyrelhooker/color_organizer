@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { v4 } from 'uuid';
 import logo from './logo.svg';
-import './App.css';
+import './stylesheets/App.scss';
 import AddColorForm from './components/AddColorForm';
 import StarRating from './components/StarRating';
 import ColorList from './components/ColorList';

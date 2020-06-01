@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
+import '../stylesheets/AddColorForm.scss';
 
 const AddColorForm = ({ onNewColor = f => f }) => {
   const titleInput = useRef();
@@ -14,7 +15,7 @@ const AddColorForm = ({ onNewColor = f => f }) => {
   };
 
   return (
-    <form onSubmit={submit}>
+    <form className='add-color' onSubmit={submit}>
       <input
         ref={titleInput}
         type='text'
