@@ -7,6 +7,7 @@ import './stylesheets/App.scss';
 function App() {
   const [colors, setColors] = useState([]);
 
+  /* Receives data from the AddColorForm Component via a cb() pass via props. Creates a new array using the spread operator to include colors previous state and concatentating with the new user input. Then sets colors state. */
   const addColor = (title, color) => {
     const newColors = [
       ...colors,
@@ -20,49 +21,44 @@ function App() {
     setColors(newColors);
   };
 
+  /* Receives data from ColorList Component via a cb()
+  */
   const rateColor = (id, rating) => {
-    const colorsRating = colors.map(color =>
+    console.log(`first rating: ${rating}`)
+    const colorsRating = colors.map(color => 
+      
+      
       color.id !== id
         ? color
         : {
             ...color,
             rating
           }
+        
     );
     setColors(colorsRating);
+    console.trace('tracing colors');
   };
 
   const removeColor = id => {
     const colorsRemove = colors.filter(color => color.id !== id);
     setColors(colorsRemove);
   };
-  // const logColor = (title, color) =>
-  //   console.log(`New Color: ${title} ${color}`);
-  // const logErrFunc = 5;
 
   const [totalStars, setTotalStars] = useState();
 
-  // const initTotalStars = (value) => {
-  //   setTotalStars(value);
-  //   return {totalStars};
-  // }
   useEffect(() => {
     setTotalStars(5);
   }, [totalStars]);
 
-  const [starsSelected, setStarsSelected] = useState(0);
-
-  const change = starsSelected => setStarsSelected(starsSelected);
-
   return (
     <div className='App'>
       <AddColorForm onNewColor={addColor} />
-      {/* <StarRating
-        totalStars={totalStars}
-        starsSelected={starsSelected}
-        changeRating={change}
-      /> */}
-      <ColorList colors={colors} onRate={rateColor} onRemove={removeColor} />
+      <ColorList 
+        colors={colors} 
+        onRate={rateColor} 
+        onRemove={removeColor} 
+      />
     </div>
   );
 }

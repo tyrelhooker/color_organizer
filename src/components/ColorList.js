@@ -2,7 +2,12 @@ import React from 'react';
 import Color from './Color';
 import '../stylesheets/ColorList.scss';
 
-const ColorList = ({ colors = [], onRemove = f => f, onRate = f => f }) => {
+const ColorList = ({ 
+  colors = [], 
+  onRemove = f => f, 
+  onRate = f => f 
+}) => {
+
   return (
     <div className='color-list'>
       {colors.length === 0 ? (
@@ -12,13 +17,14 @@ const ColorList = ({ colors = [], onRemove = f => f, onRate = f => f }) => {
           <Color
             key={color.id}
             {...color}
-            onRate={rating => onRate(color.id, rating)}
+            onRate1={userRating => onRate(color.id, userRating)}
             onRemove={() => onRemove(color.id)}
           />
         ))
       )}
     </div>
   );
+  // 
 };
 
 export default ColorList;

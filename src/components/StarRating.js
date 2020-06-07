@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import Star from './Star';
 
-const StarRating = ({ totalStars = 5, starsSelected = 0, onRate = f => f }) => {
+const StarRating = ({ 
+  totalStars = 5, 
+  starsSelected = 0, 
+  onRate2 = f => f 
+}) => {
+
   return (
     <div className='star-rating'>
       {/* Can use Array(totalStars).fill() OR Array.from({length: totalStars} in lieu of spread ... operator */}
@@ -11,7 +15,8 @@ const StarRating = ({ totalStars = 5, starsSelected = 0, onRate = f => f }) => {
         <Star
           key={i}
           selected={i < starsSelected}
-          onClick={() => onRate(i + 1)}
+          // This handler sets the star rating that is then passed up to the App component through the ColorList prop
+          onClick={() => onRate2(i + 1)}
         />
       ))}
       <p>
@@ -19,6 +24,7 @@ const StarRating = ({ totalStars = 5, starsSelected = 0, onRate = f => f }) => {
       </p>
     </div>
   );
+  
 };
 
 StarRating.propTypes = {
